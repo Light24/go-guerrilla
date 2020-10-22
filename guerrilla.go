@@ -480,6 +480,9 @@ func (g *guerrilla) Start() error {
 	// wait for all servers to start (or fail)
 	startWG.Wait()
 
+	// wait for error from s.Start
+	time.Sleep(3 * time.Second)
+
 	// close, then read any errors
 	close(errs)
 	for err := range errs {
